@@ -1,0 +1,49 @@
+//Multiplication by Galloway
+
+//Initializations
+var x = 0;
+var y = 0;
+var solution = 0;
+var userInput = 0;
+var stop = false;
+var wrongAnswers = 0;
+var totalQuestions = 0;
+var wrong = 0;
+
+totalQuestions = prompt("Welcome to Multiplication Program! How many questions would you like to try?"); //"How many questions?" = totalQuestions
+for (var questions=0; questions<totalQuestions; questions++){
+  wrongAnswers+=multiPractice();
+}
+if (wrongAnswers==0){
+  alert ("Charlie, you won!");
+} else {
+  alert("You got " +wrongAnswers+ " out of " +totalQuestions+ " wrong.");
+}
+//forloop here, wrong = 0, x and y are random(3-9)
+//set solution to x*y
+
+//while userInput is not solution and stop is false, continue x*y = ? questions
+/* function to run a multiplication question 
+*generates two random numbers, 
+*asks user for solution, 
+*repeats question if incorrect. 
+*returns 1 or 0, depending if question was answered correctly*/
+function multiPractice(){
+  wrong=0;
+  x = Math.floor(Math.random()*6)+4;
+  y = Math.floor(Math.random()*6)+4;
+  solution = x*y;
+  console.log(solution);
+  while (userInput!=solution && stop==false){
+     userInput = prompt("What is " +x+ " times " +y+ "?");
+  if (userInput==solution){
+    alert("Correct!");
+  } else if (userInput=="stop"){
+    stop = true;
+  } else {
+    alert("Incorrect.");
+    wrong = 1;
+  }
+  }
+  return wrong;
+}
